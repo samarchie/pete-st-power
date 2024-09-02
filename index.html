@@ -3,92 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peterborough St Power Usage</title>
+    <title>Protected Dashboard</title>
     <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        #loading-message {
+            display: block;
+            margin-top: 20%;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        #progress-container {
+            display: none;
+            margin: 20px auto;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        #progress-bar {
+            width: 0%;
+            height: 20px;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: width 0.4s ease;
+        }
+
+        #dashboard {
+            display: none;
+            margin: 20px auto;
+            max-width: 1200px;
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
+            margin: 20px auto;
         }
+
         th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
         }
+
         th {
-            background-color: #f4f4f4;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 1.1em;
+            font-weight: bold;
         }
-        body {
-            display: none;
-            font-family: Arial, sans-serif;
-            /* text-align: center; */
-            padding-top: 20%;
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        td {
+            font-size: 1em;
+            color: #333;
+        }
+
+        td span.error {
+            color: red;
+            font-weight: bold;
+        }
+
+        #copy-button {
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        #copy-button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
-
 <body>
-    <h1>Welcome to the live Pete St Power Usage Dashboard</h1>    
-    <script>
-        // Password prompt
-        const password = prompt("Please enter the password:");
+    <div id="loading-message">
+        <p>Loading dashboard...</p>
+    </div>
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+    <div id="dashboard">
+        <button id="copy-button">Copy to Clipboard</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Unit</th>
+                    <th>UFH (Heat Energy E1)</th>
+                    <th>DHW (Volume V1)</th>
+                    <th>KWH</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example rows; add more as needed -->
+                <tr>
+                    <td>Unit 1</td>
+                    <td id="unit1-m1">Loading...</td>
+                    <td id="unit1-m2">Loading...</td>
+                    <td id="unit1-m3">Loading...</td>
+                </tr>
+                <tr>
+                    <td>Unit 2</td>
+                    <td id="unit2-m1">Loading...</td>
+                    <td id="unit2-m2">Loading...</td>
+                    <td id="unit2-m3">Loading...</td>
+                </tr>
+                <!-- Repeat for all units -->
+            </tbody>
+        </table>
+    </div>
 
-        if (password === "your_password") {
-            fetchAllData(); // Fetch data if password is correct
-        } else {
-            document.body.innerHTML = "<h1>Access Denied</h1>";
-        }
-        
-        // Fetch data for all units and measurements
-        async function fetchAllData() {
-            try {
-                // Define your API URLs for each unit and measurement
-                const urls = {
-                    'unit1-m1': 'your_api_url_for_unit1_m1',
-                    'unit1-m2': 'your_api_url_for_unit1_m2',
-                    'unit1-m3': 'your_api_url_for_unit1_m3',
-                    'unit2-m1': 'your_api_url_for_unit2_m1',
-                    'unit2-m2': 'your_api_url_for_unit2_m2',
-                    'unit2-m3': 'your_api_url_for_unit2_m3',
-                    // Add more URLs for other units
-                };
-
-                // Fetch data from all URLs
-                const fetchPromises = Object.keys(urls).map(id => 
-                    fetchData(urls[id]).then(data => ({ id, data }))
-                );
-
-                // Process all responses
-                const responses = await Promise.all(fetchPromises);
-
-                // Update table cells with fetched data
-                responses.forEach(({ id, data }) => {
-                    document.getElementById(id).textContent = data;
-                });
-
-                // Hide loading message after all data is fetched
-                document.getElementById('loading-message').style.display = 'none';
-                document.getElementById('dashboard').style.display = 'block';
-
-            } catch (error) {
-                console.error('Error fetching data:', error);
-                // If there's an error, update cells with error message
-                document.querySelectorAll('td').forEach(cell => {
-                    if (cell.textContent === 'Loading...') {
-                        cell.innerHTML = '<span style="color: red; font-weight: bold;">Error</span>';
-                    }
-                });
-            }
-        }
-
-        // Function to fetch data from a given URL
-        async function fetchData(url) {
-            const response = await fetch(url);
-            if (response.ok) {
-                const data = await response.json();
-                return data[0]['v']; // Adjust based on your API response structure
-            } else {
-                throw new Error('Failed to fetch data');
-            }
-        }
-    </script>
+    <script src="dashboard.js"></script>
 </body>
+</html>

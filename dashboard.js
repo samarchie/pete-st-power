@@ -15,13 +15,13 @@ const headers = {
 };
 
 // Prompt the user for a password
-// const password = prompt("Please enter the password:");
+const password = prompt("Please enter the password:");
 
-// if (password === "your_password") {
+if (password === "mrscat22") {
     fetchAllData(); // Fetch data if password is correct
-// } else {
-//     document.body.innerHTML = "<h1>Access Denied</h1>";
-// }
+} else {
+    document.body.innerHTML = "<h1>Access Denied</h1>";
+}
 
 // Fetch data for all units and measurements
 async function fetchAllData() {
@@ -30,7 +30,7 @@ async function fetchAllData() {
         const urls = {
             'unit1-m1': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13397&tid=140252&tz=Pacific/Auckland',
             'unit1-m2': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13398&tid=140678&tz=Pacific/Auckland',
-            'unit1-m3': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142594tz=Pacific/Auckland',
+            'unit1-m3': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142594&tz=Pacific/Auckland',
             'unit2-m1': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13389&tid=140252&tz=Pacific/Auckland',
             'unit2-m2': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13389&tid=140252&tz=Pacific/Auckland',
             'unit2-m3': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13389&tid=140252&tz=Pacific/Auckland',

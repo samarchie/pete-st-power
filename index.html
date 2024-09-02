@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peterborough St Power Usage</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        body {
+            display: none;
+            font-family: Arial, sans-serif;
+            /* text-align: center; */
+            padding-top: 20%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to the live Pete St Power Usage Dashboard</h1>    
+    <script>
+        // Password prompt
+        const password = prompt("Please enter the password:");
+
+        if (password === "your_password") {
+            fetchAllData(); // Fetch data if password is correct
+        } else {
+            document.body.innerHTML = "<h1>Access Denied</h1>";
+        }
+        
+        // Fetch data for all units and measurements
+        async function fetchAllData() {
+            try {
+                // Define your API URLs for each unit and measurement
+                const urls = {
+                    'unit1-m1': 'your_api_url_for_unit1_m1',
+                    'unit1-m2': 'your_api_url_for_unit1_m2',
+                    'unit1-m3': 'your_api_url_for_unit1_m3',
+                    'unit2-m1': 'your_api_url_for_unit2_m1',
+                    'unit2-m2': 'your_api_url_for_unit2_m2',
+                    'unit2-m3': 'your_api_url_for_unit2_m3',
+                    // Add more URLs for other units
+                };
+
+                // Fetch data from all URLs
+                const fetchPromises = Object.keys(urls).map(id => 
+                    fetchData(urls[id]).then(data => ({ id, data }))
+                );
+
+                // Process all responses
+                const responses = await Promise.all(fetchPromises);
+
+                // Update table cells with fetched data
+                responses.forEach(({ id, data }) => {
+                    document.getElementById(id).textContent = data;
+                });
+
+                // Hide loading message after all data is fetched
+                document.getElementById('loading-message').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                // If there's an error, update cells with error message
+                document.querySelectorAll('td').forEach(cell => {
+                    if (cell.textContent === 'Loading...') {
+                        cell.innerHTML = '<span style="color: red; font-weight: bold;">Error</span>';
+                    }
+                });
+            }
+        }
+
+        // Function to fetch data from a given URL
+        async function fetchData(url) {
+            const response = await fetch(url);
+            if (response.ok) {
+                const data = await response.json();
+                return data[0]['v']; // Adjust based on your API response structure
+            } else {
+                throw new Error('Failed to fetch data');
+            }
+        }
+    </script>
+</body>

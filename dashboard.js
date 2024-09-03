@@ -86,20 +86,18 @@ async function fetchAllData() {
         const totalRequests = Object.keys(urls).length;
         let completedRequests = 0;
 
-        // Fetch data from all URLs
-        const fetchPromises = Object.keys(urls).map(id => {
-            return fetchData(urls[id])
-                .then(data => {
-                    document.getElementById(id).textContent = data;
-                    completedRequests++;
-                    updateProgressBar(completedRequests, totalRequests);
-                    return { id, data };
-                })
-                .catch(error => {
-                    document.getElementById(id).innerHTML = '<span class="error">No current data</span>';
-                    completedRequests++;
-                    updateProgressBar(completedRequests, totalRequests);
-                });
+        // Fetch data from all URLs in parallel
+        const fetchPromises = Object.keys(urls).map(async (id) => {
+            try {
+                const data = await fetchData(urls[id]);
+                document.getElementById(id).textContent = data;
+                completedRequests++;
+                updateProgressBar(completedRequests, totalRequests);
+            } catch (error) {
+                document.getElementById(id).innerHTML = '<span class="error">No current data</span>';
+                completedRequests++;
+                updateProgressBar(completedRequests, totalRequests);
+            }
         });
 
         // Wait for all fetch operations to complete
@@ -132,3 +130,25 @@ function updateProgressBar(completed, total) {
     const progress = (completed / total) * 100;
     progressBar.style.width = progress + '%';
 }
+
+// Copy table data to clipboard and show "Copied!" message
+document.getElementById('copy-button').addEventListener('click', () => {
+    const table = document.querySelector('table');
+    const range = document.createRange();
+    range.selectNode(table);
+    window.getSelection().removeAllRanges(); // Clear previous selections
+    window.getSelection().addRange(range);
+
+    try {
+        document.execCommand('copy');
+        document.getElementById('copied-message').style.display = 'block'; // Show "Copied!" message
+        setTimeout(() => {
+            document.getElementById('copied-message').style.display = 'none'; // Hide "Copied!" message after 2 seconds
+        }, 2000);
+    } catch (err) {
+        console.error('Failed to copy data:', err);
+        alert('Failed to copy data to clipboard.');
+    }
+
+    window.getSelection().removeAllRanges(); // Clear selection after copying
+});

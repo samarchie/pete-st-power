@@ -31,10 +31,51 @@ async function fetchAllData() {
             'unit1-m1': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13397&tid=140252&tz=Pacific/Auckland',
             'unit1-m2': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13398&tid=140678&tz=Pacific/Auckland',
             'unit1-m3': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142594&tz=Pacific/Auckland',
-            'unit2-m1': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13389&tid=140252&tz=Pacific/Auckland',
-            'unit2-m2': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13389&tid=140252&tz=Pacific/Auckland',
-            'unit2-m3': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13389&tid=140252&tz=Pacific/Auckland',
-            // Add more URLs for other units
+            'unit2-m1': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13395&tid=140252&tz=Pacific/Auckland',
+            'unit2-m2': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13396&tid=140678&tz=Pacific/Auckland',
+            'unit2-m3': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142592&tz=Pacific/Auckland',
+            'unit3-m1': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13393&tid=140252&tz=Pacific/Auckland',
+            'unit3-m2': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13394&tid=140678&tz=Pacific/Auckland',
+            'unit3-m3': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142579&tz=Pacific/Auckland',
+            'unit4-m1': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13391&tid=140252&tz=Pacific/Auckland',
+            'unit4-m2': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13392&tid=140678&tz=Pacific/Auckland',
+            'unit4-m3': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142578&tz=Pacific/Auckland',
+            'unit5-m1': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13389&tid=140252&tz=Pacific/Auckland',
+            'unit5-m2': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13390&tid=140678&tz=Pacific/Auckland',
+            'unit5-m3': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142576&tz=Pacific/Auckland',
+            'unit6-m1': '',
+            'unit6-m2': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13387&tid=140678&tz=Pacific/Auckland',
+            'unit6-m3':'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142591&tz=Pacific/Auckland',
+            'unit7-m1': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13381&tid=140147&tz=Pacific/Auckland',
+            'unit7-m2': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13382&tid=140678&tz=Pacific/Auckland',
+            'unit7-m3': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142587&tz=Pacific/Auckland',
+            'unit8-m1': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13412&tid=140252&tz=Pacific/Auckland',
+            'unit8-m2': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13411&tid=140370&tz=Pacific/Auckland',
+            'unit8-m3': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142589&tz=Pacific/Auckland',
+            'unit9-m1': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13399&tid=140252&tz=Pacific/Auckland',
+            'unit9-m2':'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13400&tid=140678&tz=Pacific/Auckland',
+            'unit9-m3': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142586&tz=Pacific/Auckland',
+            'unit10-m1': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13414&tid=140147&tz=Pacific/Auckland',
+            'unit10-m2': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13413&tid=140370&tz=Pacific/Auckland',
+            'unit10-m3': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142595&tz=Pacific/Auckland',
+            'unit11-m1': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13401&tid=140252&tz=Pacific/Auckland', 
+            'unit11-m2': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13402&tid=140678&tz=Pacific/Auckland',
+            'unit11-m3': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142581&tz=Pacific/Auckland',
+            'unit12-m1': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13404&tid=140252&tz=Pacific/Auckland',
+            'unit12-m2': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13403&tid=140678&tz=Pacific/Auckland',
+            'unit12-m3': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142582&tz=Pacific/Auckland',
+            'unit13-m1': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13405&tid=140252&tz=Pacific/Auckland',
+            'unit13-m2': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13406&tid=140678&tz=Pacific/Auckland',
+            'unit13-m3': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142583&tz=Pacific/Auckland',
+            'unit14-m1': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13407&tid=140252&tz=Pacific/Auckland',
+            'unit14-m2': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13408&tid=140678&tz=Pacific/Auckland',
+            'unit14-m3': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142584&tz=Pacific/Auckland',
+            'commonareas-m1': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142570&tz=Pacific/Auckland',
+            'commonareas-m2': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142572&tz=Pacific/Auckland',
+            'commonareas-m3': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142574&tz=Pacific/Auckland',
+            'plantroom-m1':'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142597&tz=Pacific/Auckland',
+            'plantroom-m2':'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142599&tz=Pacific/Auckland',
+            'plantroom-m3': 'https://www.splashmonitoring.com//getv2data/getcurrentdatapertidstring_v2?did=13432&tid=142601&tz=Pacific/Auckland',
         };
 
         // Show loading message and progress container
@@ -55,7 +96,7 @@ async function fetchAllData() {
                     return { id, data };
                 })
                 .catch(error => {
-                    document.getElementById(id).innerHTML = '<span class="error">Error</span>';
+                    document.getElementById(id).innerHTML = '<span class="error">No current data</span>';
                     completedRequests++;
                     updateProgressBar(completedRequests, totalRequests);
                 });
@@ -79,7 +120,7 @@ async function fetchData(url) {
     const response = await fetch(url, { headers });
     if (response.ok) {
         const data = await response.json();
-        return data[0]['v']; // Adjust based on your API response structure
+        return Math.abs(data[0]['v']); // Adjust based on your API response structure
     } else {
         throw new Error('Failed to fetch data');
     }
